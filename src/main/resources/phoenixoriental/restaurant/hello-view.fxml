@@ -9,14 +9,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane layoutX="7.0" prefHeight="400.0" prefWidth="300.0">
+            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css">
                <children>
-                  <Label layoutX="79.0" layoutY="293.0" text="Create Account">
+                  <Label layoutX="79.0" layoutY="293.0" text="Create Account" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -24,10 +23,10 @@
                   <Button layoutX="40.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="Create new account" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="300.0" layoutY="-14.0" prefHeight="400.0" prefWidth="300.0">
+            <AnchorPane layoutX="300.0" layoutY="-14.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
                <children>
                   <Hyperlink layoutX="40.0" layoutY="230.0" text="Forgot password?" />
-                  <Label layoutX="40.0" layoutY="70.0" text="Login Account">
+                  <Label layoutX="40.0" layoutY="70.0" text="Login Account" textFill="#36b9a7">
                      <font>
                         <Font size="20.0" />
                      </font>
