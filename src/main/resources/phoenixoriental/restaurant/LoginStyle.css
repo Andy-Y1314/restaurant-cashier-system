@@ -5,3 +5,17 @@
 .white-form{
     -fx-background-color: #fff;
 }
+
+.head-label{
+    -fx-border-color: #308376;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 0 0 0 5px;
+}
+
+.login-btn{
+    -fx-background-color: linear-gradient(to bottom right, #15a169, #2fcba9);
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
