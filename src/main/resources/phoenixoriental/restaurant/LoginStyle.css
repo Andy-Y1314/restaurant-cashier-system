@@ -1,5 +1,5 @@
 .gradient{
-    -fx-background-color: linear-gradient(to bottom right, #37b9a7, #308376)
+    -fx-background-color: linear-gradient(to bottom right, #37b9a7, #308376);
 }
 
 .white-form{
@@ -18,4 +18,31 @@
     -fx-cursor: hand;
     -fx-text-fill: #fff;
     -fx-font-size: 14px;
+}
+
+.login-btn:hover{
+    -fx-background-color: linear-gradient(to bottom right, #12c99b, #29a483);
+}
+
+.textfield{
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #37b9a7, #308376);
+    -fx-border-width: .8px;
+}
+
+.textfield:focused {
+    -fx-border-width: 1px;
+}
+
+.create-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-border-color: #fff;
+    -fx-border-width: 1px;
+}
+
+.create-btn:hover{
+    -fx-background-color: #fff;
+    -fx-text-fill: #000;
 }

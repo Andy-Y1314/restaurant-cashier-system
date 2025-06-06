@@ -15,14 +15,14 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css">
+            <AnchorPane layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css" visible="false">
                <children>
                   <Label layoutX="79.0" layoutY="293.0" text="Create Account" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="40.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="Create new account" />
+                  <Button layoutX="40.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="create-btn" stylesheets="@LoginStyle.css" text="Create new account" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon.png" />
@@ -31,16 +31,29 @@
                   <Label layoutX="99.0" layoutY="220.0" text="Restaurant POS" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="300.0" layoutY="-14.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
+            <AnchorPane layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
                <children>
                   <Hyperlink layoutX="40.0" layoutY="230.0" text="Forgot password?" />
-                  <Label layoutX="40.0" layoutY="70.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Login Account" textFill="#239278">
+                  <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Login Account" textFill="#29a483">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" />
-                  <PasswordField layoutX="40.0" layoutY="200.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" />
+                  <TextField layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <PasswordField layoutX="40.0" layoutY="200.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <Button layoutX="40.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
+               <children>
+                  <Hyperlink layoutX="40.0" layoutY="230.0" text="Forgot password?" />
+                  <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Login Account" textFill="#29a483">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <PasswordField layoutX="40.0" layoutY="200.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
                   <Button layoutX="40.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" />
                </children>
             </AnchorPane>
