@@ -16,47 +16,47 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css" visible="false">
+            <AnchorPane fx:id="si_loginForm" layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
                <children>
-                  <Label layoutX="79.0" layoutY="293.0" text="Create Account" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="40.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="create-btn" stylesheets="@LoginStyle.css" text="Create new account" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icon.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="99.0" layoutY="220.0" text="Restaurant POS" />
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
-               <children>
-                  <Hyperlink layoutX="40.0" layoutY="230.0" text="Forgot password?" />
+                  <Hyperlink fx:id="si_forgotPass" layoutX="40.0" layoutY="230.0" text="Forgot password?" />
                   <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Login Account" textFill="#29a483">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <PasswordField layoutX="40.0" layoutY="200.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <Button layoutX="40.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" />
+                  <TextField fx:id="si_username" layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <PasswordField fx:id="si_password" layoutX="40.0" layoutY="200.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <Button fx:id="si_loginBtn" layoutX="40.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
+            <AnchorPane fx:id="su_signupForm" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
                <children>
                   <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Register Account" textFill="#29a483">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="40.0" layoutY="121.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <PasswordField layoutX="40.0" layoutY="164.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <ComboBox layoutX="40.0" layoutY="209.0" prefHeight="30.0" prefWidth="220.0" promptText="Question" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <TextField layoutX="40.0" layoutY="251.0" prefHeight="30.0" prefWidth="220.0" promptText="Answer" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <Button layoutX="40.0" layoutY="328.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Sign Up " />
+                  <TextField fx:id="su_username" layoutX="40.0" layoutY="121.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <PasswordField fx:id="su_password" layoutX="40.0" layoutY="164.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <ComboBox fx:id="su_question" layoutX="40.0" layoutY="209.0" prefHeight="30.0" prefWidth="220.0" promptText="Question" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <TextField fx:id="su_answer" layoutX="40.0" layoutY="251.0" prefHeight="30.0" prefWidth="220.0" promptText="Answer" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <Button fx:id="su_signupBtn" layoutX="40.0" layoutY="328.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Sign Up " />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="side_form" layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css" visible="false">
+               <children>
+                  <Label layoutX="79.0" layoutY="293.0" text="Create Account" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="side_createBtn" layoutX="40.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="create-btn" stylesheets="@LoginStyle.css" text="Create new account" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="99.0" layoutY="220.0" text="Restaurant POS" />
                </children>
             </AnchorPane>
          </children>
