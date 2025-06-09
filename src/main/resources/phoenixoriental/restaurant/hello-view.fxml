@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixoriental.restaurant.HelloController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -43,14 +43,15 @@
                   <Button fx:id="su_signupBtn" layoutX="40.0" layoutY="328.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Sign Up " />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="side_form" layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css" visible="false">
+            <AnchorPane fx:id="side_form" layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css">
                <children>
                   <Label layoutX="79.0" layoutY="293.0" text="Create Account" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="side_createBtn" layoutX="40.0" layoutY="338.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="create-btn" stylesheets="@LoginStyle.css" text="Create new account" />
+                  <Button fx:id="side_createBtn" layoutX="50.0" layoutY="348.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="220.0" styleClass="create-btn" stylesheets="@LoginStyle.css" text="Create new account" />
+                  <Button fx:id="side_alreadyHave" layoutX="50.0" layoutY="348.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="220.0" styleClass="create-btn" stylesheets="@LoginStyle.css" text="Already have an account" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icon.png" />
