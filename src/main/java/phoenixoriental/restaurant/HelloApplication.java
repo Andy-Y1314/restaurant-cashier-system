@@ -2,6 +2,7 @@ package phoenixoriental.restaurant;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -15,6 +16,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Phoenix Oriental Menu System");
+        stage.setMinHeight(400);
+        stage.setMinWidth(600);
         stage.setScene(scene);
         stage.show();
     }
