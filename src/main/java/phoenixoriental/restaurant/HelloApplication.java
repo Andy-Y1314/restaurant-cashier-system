@@ -16,8 +16,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Phoenix Oriental Menu System");
-        stage.setMinHeight(400);
-        stage.setMinWidth(600);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

@@ -7,6 +7,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class HelloController {
 
     @FXML
@@ -50,6 +54,10 @@ public class HelloController {
 
     @FXML
     private Button side_alreadyHave;
+
+    private Connection connect;
+    private PreparedStatement prepare;
+    private ResultSet result;
 
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
