@@ -1,6 +1,8 @@
 package phoenixoriental.restaurant;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,6 +12,9 @@ import javafx.util.Duration;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class HelloController {
 
@@ -41,7 +46,7 @@ public class HelloController {
     private PasswordField su_password;
 
     @FXML
-    private ComboBox<?> su_question;
+    private ComboBox<String> su_question;
 
     @FXML
     private Button su_signupBtn;
@@ -59,6 +64,18 @@ public class HelloController {
     private PreparedStatement prepare;
     private ResultSet result;
 
+    private String[] questionList = {"What is your favourite colour?", "What is your favourite food?", "When is your birthday?"};
+
+    public void regLquestionList() {
+
+        List<String> listQ = new ArrayList<>(Arrays.asList(questionList));
+
+        ObservableList<String> listData = FXCollections.observableArrayList(listQ);
+
+        su_question.setItems(listData);
+    }
+
+
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
 
@@ -70,6 +87,8 @@ public class HelloController {
             slider.setOnFinished((ActionEvent e) ->{
                 side_alreadyHave.setVisible(true);
                 side_createBtn.setVisible(false);
+
+                regLquestionList();
             });
 
             slider.play();
@@ -86,4 +105,5 @@ public class HelloController {
             slider.play();
         }
     }
+
 }
