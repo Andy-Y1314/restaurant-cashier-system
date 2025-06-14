@@ -64,6 +64,58 @@ public class HelloController {
     private PreparedStatement prepare;
     private ResultSet result;
 
+    private Alert alert;
+
+    public void regBtn() {
+        if (su_username.getText().isEmpty() || su_password.getText().isEmpty()
+                || su_question.getSelectionModel().getSelectedItem() == null
+                || su_answer.getText().isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all blank fields");
+            alert.showAndWait();
+        } else {
+            String regData = "INSERT INTO employee (username, password, question, answer)"
+                    + "VALUES(?,?,?,?)";
+            connect = Database.connectDB();
+
+            try {
+                prepare = connect.prepareStatement(regData);
+                prepare.setString(1, su_username.getText());
+                prepare.setString(2, su_password.getText());
+                prepare.setString(3, su_question.getSelectionModel().getSelectedItem());
+                prepare.setString(4, su_answer.getText());
+
+                prepare.executeUpdate();
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully registered account!");
+                alert.showAndWait();
+
+                su_username.setText("");
+                su_password.setText("");
+                su_question.getSelectionModel().clearSelection();
+                su_answer.setText("");
+
+                TranslateTransition slider = new TranslateTransition();
+                slider.setNode(side_form);
+                slider.setToX(0);
+                slider.setDuration(Duration.seconds(.5));
+
+                slider.setOnFinished((ActionEvent e) -> {
+                    side_alreadyHave.setVisible(false);
+                    side_createBtn.setVisible(true);
+                });
+
+                slider.play();
+
+            } catch(Exception e) {e.printStackTrace();}
+        }
+    }
+
     private String[] questionList = {"What is your favourite colour?", "What is your favourite food?", "When is your birthday?"};
 
     public void regLquestionList() {
@@ -84,7 +136,7 @@ public class HelloController {
             slider.setToX(300);
             slider.setDuration(Duration.seconds(.5));
 
-            slider.setOnFinished((ActionEvent e) ->{
+            slider.setOnFinished((ActionEvent e) -> {
                 side_alreadyHave.setVisible(true);
                 side_createBtn.setVisible(false);
 
@@ -97,7 +149,7 @@ public class HelloController {
             slider.setToX(0);
             slider.setDuration(Duration.seconds(.5));
 
-            slider.setOnFinished((ActionEvent e) ->{
+            slider.setOnFinished((ActionEvent e) -> {
                 side_alreadyHave.setVisible(false);
                 side_createBtn.setVisible(true);
             });
