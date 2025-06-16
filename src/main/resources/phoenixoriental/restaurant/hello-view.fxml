@@ -26,7 +26,7 @@
                   </Label>
                   <TextField fx:id="si_username" layoutX="40.0" layoutY="157.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@LoginStyle.css" />
                   <PasswordField fx:id="si_password" layoutX="40.0" layoutY="200.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <Button fx:id="si_loginBtn" layoutX="40.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" />
+                  <Button fx:id="si_loginBtn" layoutX="40.0" layoutY="274.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Login" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="su_signupForm" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">

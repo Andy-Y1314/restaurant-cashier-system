@@ -67,6 +67,44 @@ public class HelloController {
 
     private Alert alert;
 
+    public void loginBtn() {
+        if (si_username.getText().isEmpty() || si_password.getText().isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Incorrect username/password");
+            alert.showAndWait();
+        } else {
+            String selectData = "SELECT username, password FROM employee WHERE username = ? and password = ?";
+
+            connect = Database.connectDB();
+
+            try {
+                prepare = connect.prepareStatement(selectData);
+                prepare.setString(1, si_username.getText());
+                prepare.setString(2, si_password.getText());
+
+                result = prepare.executeQuery();
+                //If successful login, then proceed to another form which is the main form
+                if (result.next()) {
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Login!");
+                    alert.showAndWait();
+                } else { //Show error message
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Incorrect username/password");
+                    alert.showAndWait();
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void regBtn() {
         if (su_username.getText().isEmpty() || su_password.getText().isEmpty()
                 || su_question.getSelectionModel().getSelectedItem() == null
