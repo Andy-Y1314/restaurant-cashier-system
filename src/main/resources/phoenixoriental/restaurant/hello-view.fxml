@@ -43,17 +43,30 @@
                   <Button fx:id="su_signupBtn" layoutX="40.0" layoutY="328.0" mnemonicParsing="false" onAction="#regBtn" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Sign Up " />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="si_loginForm1" layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
+            <AnchorPane fx:id="fp_question_form" layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css" visible="false">
                <children>
                   <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Forgot Password" textFill="#29a483">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="si_loginBtn1" layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Proceed" />
-                  <ComboBox layoutX="40.0" layoutY="152.0" prefHeight="25.0" prefWidth="220.0" promptText="Question" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <TextField layoutX="41.0" layoutY="188.0" prefHeight="25.0" prefWidth="220.0" promptText="Answer" styleClass="textfield" stylesheets="@LoginStyle.css" />
-                  <Button layoutX="118.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Back" />
+                  <Button fx:id="fp_proceedBtn" layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Proceed" />
+                  <ComboBox fx:id="fp_question" layoutX="40.0" layoutY="152.0" prefHeight="25.0" prefWidth="220.0" promptText="Question" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <TextField fx:id="fp_answer" layoutX="41.0" layoutY="188.0" prefHeight="25.0" prefWidth="220.0" promptText="Answer" styleClass="textfield" stylesheets="@LoginStyle.css" />
+                  <Button fx:id="fp_back" layoutX="118.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Back" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="np_newPassForm" layoutX="300.0" layoutY="7.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
+               <children>
+                  <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Forgot Password" textFill="#29a483">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="np_changePassBtn" layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Change Password" />
+                  <Button fx:id="np_back" layoutX="118.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Back" />
+                  <PasswordField fx:id="np_confirmPassword" layoutX="40.0" layoutY="177.0" prefHeight="30.0" prefWidth="220.0" promptText="Confirm Password" />
+                  <PasswordField fx:id="np_newPassword" layoutX="40.0" layoutY="136.0" prefHeight="30.0" prefWidth="220.0" promptText="New Password" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="side_form" layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="gradient" stylesheets="@LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
