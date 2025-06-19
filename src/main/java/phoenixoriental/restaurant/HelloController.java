@@ -20,6 +20,36 @@ import java.util.List;
 public class HelloController {
 
     @FXML
+    private TextField fp_answer;
+
+    @FXML
+    private Button fp_back;
+
+    @FXML
+    private Button fp_proceedBtn;
+
+    @FXML
+    private ComboBox<?> fp_question;
+
+    @FXML
+    private AnchorPane fp_questionForm;
+
+    @FXML
+    private Button np_back;
+
+    @FXML
+    private Button np_changePassBtn;
+
+    @FXML
+    private PasswordField np_confirmPassword;
+
+    @FXML
+    private AnchorPane np_newPassForm;
+
+    @FXML
+    private PasswordField np_newPassword;
+
+    @FXML
     private Hyperlink si_forgotPass;
 
     @FXML
@@ -33,6 +63,9 @@ public class HelloController {
 
     @FXML
     private TextField si_username;
+
+    @FXML
+    private Button side_alreadyHave;
 
     @FXML
     private Button side_createBtn;
@@ -57,9 +90,6 @@ public class HelloController {
 
     @FXML
     private TextField su_username;
-
-    @FXML
-    private Button side_alreadyHave;
 
     private Connection connect;
     private PreparedStatement prepare;
@@ -189,6 +219,10 @@ public class HelloController {
         su_question.setItems(listData);
     }
 
+    public void switchForgotPass() {
+        fp_questionForm.setVisible(true);
+        si_loginForm.setVisible(false);
+    }
 
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
