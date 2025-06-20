@@ -236,6 +236,11 @@ public class HelloController {
                 side_alreadyHave.setVisible(true);
                 side_createBtn.setVisible(false);
 
+                //Reset state for forgot password
+                fp_questionForm.setVisible(false);
+                si_loginForm.setVisible(true);
+                np_newPassForm.setVisible(false);
+
                 regLquestionList();
             });
 
@@ -248,6 +253,11 @@ public class HelloController {
             slider.setOnFinished((ActionEvent e) -> {
                 side_alreadyHave.setVisible(false);
                 side_createBtn.setVisible(true);
+
+                //Reset state for forgot password
+                fp_questionForm.setVisible(false);
+                si_loginForm.setVisible(true);
+                np_newPassForm.setVisible(false);
             });
 
             slider.play();
