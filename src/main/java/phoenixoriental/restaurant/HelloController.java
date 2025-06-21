@@ -222,6 +222,19 @@ public class HelloController {
     public void switchForgotPass() {
         fp_questionForm.setVisible(true);
         si_loginForm.setVisible(false);
+
+        forgotPassQuestionList();
+    }
+
+    public void forgotPassQuestionList() {
+        List<String> listQ = new ArrayList<>();
+
+        for (String data : questionList) {
+            listQ.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList();
+        fp_question.setItems(listData);
     }
 
     public void switchForm(ActionEvent event) {
