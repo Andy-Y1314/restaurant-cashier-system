@@ -16,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane fx:id="si_loginForm" layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="si_loginForm" layoutX="300.0" layoutY="3.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Hyperlink fx:id="si_forgotPass" layoutX="40.0" layoutY="236.0" onAction="#switchForgotPass" text="Forgot password?" />
                   <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Login Account" textFill="#29a483">
@@ -56,7 +56,7 @@
                   <Button fx:id="fp_back" layoutX="118.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="53.0" styleClass="login-btn" stylesheets="@LoginStyle.css" text="Back" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="np_newPassForm" layoutX="300.0" layoutY="7.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css" visible="false">
+            <AnchorPane fx:id="np_newPassForm" layoutX="300.0" layoutY="7.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@LoginStyle.css">
                <children>
                   <Label layoutX="40.0" layoutY="78.0" styleClass="head-label" stylesheets="@LoginStyle.css" text="Forgot Password" textFill="#29a483">
                      <font>

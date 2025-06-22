@@ -226,6 +226,20 @@ public class HelloController {
         forgotPassQuestionList();
     }
 
+    public void proceedBtn() {
+        if (fp_question.getSelectionModel().getSelectedItem() == null
+            || fp_answer.getText().isEmpty()) {
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all blank fields");
+            alert.showAndWait();
+        } else {
+
+        }
+    }
+
     public void forgotPassQuestionList() {
         List<String> listQ = new ArrayList<>();
 
@@ -233,7 +247,7 @@ public class HelloController {
             listQ.add(data);
         }
 
-        ObservableList listData = FXCollections.observableArrayList();
+        ObservableList listData = FXCollections.observableArrayList(listQ);
         fp_question.setItems(listData);
     }
 
