@@ -18,6 +18,8 @@ import java.util.Date;
 import java.util.List;
 
 public class HelloController {
+    @FXML
+    private TextField fp_username;
 
     @FXML
     private TextField fp_answer;
@@ -227,7 +229,7 @@ public class HelloController {
     }
 
     public void proceedBtn() {
-        if (fp_question.getSelectionModel().getSelectedItem() == null
+        if (fp_username.getText().isEmpty() || fp_question.getSelectionModel().getSelectedItem() == null
             || fp_answer.getText().isEmpty()) {
 
             alert = new Alert(Alert.AlertType.ERROR);
@@ -236,7 +238,31 @@ public class HelloController {
             alert.setContentText("Please fill all blank fields");
             alert.showAndWait();
         } else {
+            String selectData = "SELECT username, question, answer FROM employee WHERE username = ? AND question = ? AND answer = ? ";
 
+            connect = Database.connectDB();
+
+            try {
+                prepare = connect.prepareStatement(selectData);
+                prepare.setString(1, fp_username.getText());
+                prepare.setString(2, (String) fp_question.getSelectionModel().getSelectedItem());
+                prepare.setString(3, fp_answer.getText());
+
+                result = prepare.executeQuery();
+
+                if (result. next()) {
+                    np_newPassForm.setVisible(true);
+                    fp_questionForm.setVisible(false);
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Incorrect Information");
+                    alert.showAndWait();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
