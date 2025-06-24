@@ -266,6 +266,69 @@ public class HelloController {
         }
     }
 
+    public void changePassBtn() {
+        if (np_newPassword.getText().isEmpty() || np_confirmPassword.getText().isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all blank fields");
+            alert.showAndWait();
+        } else {
+            if (np_newPassword.getText().equals(np_confirmPassword.getText())) {
+                String getDate = "SELECT date FROM employee WHERE username = '"
+                        + fp_username.getText() + "'";
+
+                connect = Database.connectDB();
+
+                try {
+                    prepare = connect.prepareStatement(getDate);
+                    result = prepare.executeQuery();
+
+                    String date = "";
+
+                    if (result.next()) {
+                        date = result.getString("date");
+                    }
+
+                    String updatePass = "UPDATE employee SET password = '"
+                            + np_newPassword.getText() + "', question = '"
+                            + fp_question.getSelectionModel().getSelectedItem() + "', answer = '"
+                            + fp_answer.getText() + "', date = '"
+                            + date + "' WHERE username = '"
+                            + fp_username.getText() + "'";
+
+                    prepare = connect.prepareStatement(updatePass);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully changed password");
+                    alert.showAndWait();
+
+                    si_loginForm.setVisible(true);
+                    np_newPassForm.setVisible(false);
+
+                    //Clear fields
+                    np_confirmPassword.setText("");
+                    np_newPassword.setText("");
+                    fp_question.getSelectionModel().clearSelection();
+                    fp_answer.setText("");
+                    fp_username.setText("");
+
+
+
+                } catch (Exception e) { e.printStackTrace(); };
+            } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Not match");
+                alert.showAndWait();
+            }
+        }
+    }
+
     public void forgotPassQuestionList() {
         List<String> listQ = new ArrayList<>();
 
