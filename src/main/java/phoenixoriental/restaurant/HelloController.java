@@ -340,6 +340,16 @@ public class HelloController {
         fp_question.setItems(listData);
     }
 
+    public void backToLoginForm() {
+        si_loginForm.setVisible(true);
+        fp_questionForm.setVisible(false);
+    }
+
+    public void backToQuestionForm() {
+        fp_questionForm.setVisible(true);
+        np_newPassForm.setVisible(false);
+    }
+
     public void switchForm(ActionEvent event) {
         TranslateTransition slider = new TranslateTransition();
 
