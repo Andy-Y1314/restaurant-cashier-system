@@ -1,0 +1,21 @@
+.header {
+    -fx-background-color: linear-gradient(to bottom right, #15a169, #2fcba9);
+}
+
+.nav-form {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #308376);
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #fff;
+    -fx-border-width .4px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #fff;
+    -fx-text-fill: #000;
+}
