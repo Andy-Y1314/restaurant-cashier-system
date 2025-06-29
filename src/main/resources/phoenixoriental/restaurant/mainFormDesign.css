@@ -19,3 +19,15 @@
     -fx-background-color: #fff;
     -fx-text-fill: #000;
 }
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
+}
+
+.white-bg {
+    -fx-background-color: #fff;
+}
+
+.radius {
+    -fx-background-radius: 8px;
+}
