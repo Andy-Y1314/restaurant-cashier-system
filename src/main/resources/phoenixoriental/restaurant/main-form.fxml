@@ -20,7 +20,7 @@
                <left>
                   <AnchorPane prefHeight="600.0" prefWidth="243.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane prefHeight="600.0" prefWidth="243.0" styleClass="nav-form" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane prefHeight="600.0" prefWidth="238.0" styleClass="nav-form" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="27.0" prefHeight="105.0" prefWidth="243.0" styleClass="header" stylesheets="@mainFormDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -75,7 +75,105 @@
                            <children>
                               <ScrollPane layoutX="193.0" layoutY="14.0" prefHeight="214.0" prefWidth="832.0" styleClass="transparent" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <AnchorPane prefHeight="200.0" prefWidth="956.0" />
+                                    <AnchorPane prefHeight="200.0" prefWidth="956.0">
+                                       <children>
+                                          <AnchorPane layoutX="14.0" layoutY="24.0" prefHeight="152.0" prefWidth="258.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@user-icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="283.0" layoutY="24.0" prefHeight="152.0" prefWidth="263.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@user-icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="829.0" layoutY="24.0" prefHeight="152.0" prefWidth="263.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@user-icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="552.0" layoutY="24.0" prefHeight="152.0" prefWidth="258.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@user-icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="821.0" layoutY="24.0" prefHeight="152.0" prefWidth="263.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@user-icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
                                  </content>
                               </ScrollPane>
                            </children>
