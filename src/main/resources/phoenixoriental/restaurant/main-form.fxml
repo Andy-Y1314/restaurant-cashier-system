@@ -64,7 +64,7 @@
                   </AnchorPane>
                </left>
                <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="600.0" prefWidth="1033.0" BorderPane.alignment="CENTER">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="200.0" prefWidth="832.0" stylesheets="@mainFormDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="21.0">
                            <styleClass>
@@ -79,9 +79,9 @@
                                        <children>
                                           <AnchorPane layoutX="14.0" layoutY="24.0" prefHeight="152.0" prefWidth="258.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
                                              <children>
-                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@user-icon.png" />
+                                                      <Image url="@user.png" />
                                                    </image>
                                                 </ImageView>
                                                 <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
@@ -89,7 +89,7 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                <Label layoutX="71.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -98,17 +98,17 @@
                                           </AnchorPane>
                                           <AnchorPane layoutX="283.0" layoutY="24.0" prefHeight="152.0" prefWidth="263.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
                                              <children>
-                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="20.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@user-icon.png" />
+                                                      <Image url="@dollar.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                <Label layoutX="225.0" layoutY="14.0" text="\$0" textFill="#fffdfd">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                <Label layoutX="80.0" layoutY="52.0" text="Today's Income" textFill="#fffdfd">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -116,25 +116,6 @@
                                              </children>
                                           </AnchorPane>
                                           <AnchorPane layoutX="829.0" layoutY="24.0" prefHeight="152.0" prefWidth="263.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
-                                             <children>
-                                                <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@user-icon.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane layoutX="552.0" layoutY="24.0" prefHeight="152.0" prefWidth="258.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
                                              <children>
                                                 <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -166,6 +147,44 @@
                                                    </font>
                                                 </Label>
                                                 <Label layoutX="108.0" layoutY="53.0" text="Number of Customers" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="555.0" layoutY="24.0" prefHeight="152.0" prefWidth="258.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@money.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="\$0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="71.0" layoutY="53.0" text="Total Income" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="824.0" layoutY="24.0" prefHeight="152.0" prefWidth="263.0" styleClass="nav-form" stylesheets="@mainFormDesign.css">
+                                             <children>
+                                                <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="20.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@cart.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="80.0" layoutY="52.0" text="Number of items sold" textFill="#fffdfd">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
