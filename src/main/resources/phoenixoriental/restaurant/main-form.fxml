@@ -129,7 +129,7 @@
                                                    <children>
                                                       <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@user-icon.png" />
+                                                            <Image url="@user.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
@@ -148,7 +148,7 @@
                                                    <children>
                                                       <ImageView fitHeight="63.0" fitWidth="90.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@user-icon.png" />
+                                                            <Image url="@user.png" />
                                                          </image>
                                                       </ImageView>
                                                       <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
