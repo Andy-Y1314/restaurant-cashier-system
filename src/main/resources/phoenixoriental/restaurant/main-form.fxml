@@ -321,11 +321,11 @@
                                           <String fx:value="shadow" />
                                        </styleClass>
                                     </AnchorPane>
-                                    <Button layoutX="691.0" layoutY="168.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" text="Import" AnchorPane.rightAnchor="55.0" />
-                                    <Button layoutX="48.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" text="Add" AnchorPane.bottomAnchor="49.0" />
-                                    <Button layoutX="179.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" text="Update" AnchorPane.bottomAnchor="49.0" />
-                                    <Button layoutX="315.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" text="Clear" AnchorPane.bottomAnchor="49.0" />
-                                    <Button layoutX="446.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" text="Delete" AnchorPane.bottomAnchor="49.0" />
+                                    <Button layoutX="691.0" layoutY="168.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Import" AnchorPane.rightAnchor="55.0" />
+                                    <Button layoutX="48.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Add" AnchorPane.bottomAnchor="49.0" />
+                                    <Button layoutX="179.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Update" AnchorPane.bottomAnchor="49.0" />
+                                    <Button layoutX="315.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Clear" AnchorPane.bottomAnchor="49.0" />
+                                    <Button layoutX="446.0" layoutY="176.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Delete" AnchorPane.bottomAnchor="49.0" />
                                     <Label layoutX="329.0" layoutY="86.0" text="Status:">
                                        <font>
                                           <Font size="14.0" />
