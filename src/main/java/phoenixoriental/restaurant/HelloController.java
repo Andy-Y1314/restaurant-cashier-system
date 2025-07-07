@@ -5,8 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.Connection;
@@ -124,6 +128,21 @@ public class HelloController {
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Login!");
                     alert.showAndWait();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("main-form.fxml"));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    stage.setTitle("Restaurant Management System");
+                    stage.setMinWidth(1100);
+                    stage.setMinHeight(600);
+
+                    stage.setScene(scene);
+                    stage.show();
+
+                    si_loginBtn.getScene().getWindow().hide();
+
                 } else { //Show error message
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
