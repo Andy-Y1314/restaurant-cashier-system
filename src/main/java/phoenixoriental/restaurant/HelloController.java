@@ -123,6 +123,9 @@ public class HelloController {
                 result = prepare.executeQuery();
                 //If successful login, then proceed to another form which is the main form
                 if (result.next()) {
+                    //To get the username that user used
+                    Data.username = si_username.getText();
+
                     alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
