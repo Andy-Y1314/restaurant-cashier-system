@@ -1,5 +1,7 @@
 package phoenixoriental.restaurant;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,9 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainFromController implements Initializable {
     @FXML
@@ -82,7 +82,37 @@ public class MainFromController implements Initializable {
     @FXML
     private Label username;
 
+    @FXML
+    private TextField inventory_productID;
+
+    @FXML
+    private TextField inventory_productName;
+
+    @FXML
+    private TextField inventory_stock;
+
+    @FXML
+    private TextField inventory_price;
+
+    @FXML
+    private ComboBox<String> inventory_status;
+
+    @FXML
+    private ComboBox<String> inventory_type;
+
     private Alert alert;
+
+    private String[] typeList = {"Meals", "Drinks"};
+
+    public void inventoryTypeList() {
+        List<String> typeL = new ArrayList<>();
+
+        for (String data : typeList) {
+            typeL.add(data);
+        }
+        ObservableList<String> listData = FXCollections.observableArrayList(typeL);
+        inventory_type.setItems(listData);
+    }
 
     public void logout() {
         try {
@@ -121,5 +151,6 @@ public class MainFromController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayUserName();
+        inventoryTypeList();
     }
 }

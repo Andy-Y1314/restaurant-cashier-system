@@ -35,7 +35,7 @@ public class HelloController {
     private Button fp_proceedBtn;
 
     @FXML
-    private ComboBox<?> fp_question;
+    private ComboBox<String> fp_question;
 
     @FXML
     private AnchorPane fp_questionForm;
@@ -235,7 +235,6 @@ public class HelloController {
     private String[] questionList = {"What is your favourite colour?", "What is your favourite food?", "When is your birthday?"};
 
     public void regLquestionList() {
-
         List<String> listQ = new ArrayList<>(Arrays.asList(questionList));
 
         ObservableList<String> listData = FXCollections.observableArrayList(listQ);
@@ -358,7 +357,7 @@ public class HelloController {
             listQ.add(data);
         }
 
-        ObservableList listData = FXCollections.observableArrayList(listQ);
+        ObservableList<String> listData = FXCollections.observableArrayList(listQ);
         fp_question.setItems(listData);
     }
 
