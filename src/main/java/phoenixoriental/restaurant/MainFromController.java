@@ -114,6 +114,19 @@ public class MainFromController implements Initializable {
         inventory_type.setItems(listData);
     }
 
+    private String[] statusList = {"Available", "Unavailable"};
+
+    public void inventoryStatusList() {
+        List<String> statusL = new ArrayList<>();
+
+        for (String data : statusList) {
+            statusL.add(data);
+        }
+
+        ObservableList<String> listData = FXCollections.observableArrayList(statusL);
+        inventory_status.setItems(listData);
+    }
+
     public void logout() {
         try {
             alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -152,5 +165,6 @@ public class MainFromController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayUserName();
         inventoryTypeList();
+        inventoryStatusList();
     }
 }
