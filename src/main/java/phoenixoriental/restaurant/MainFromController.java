@@ -8,11 +8,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 public class MainFromController implements Initializable {
@@ -32,25 +37,25 @@ public class MainFromController implements Initializable {
     private Button inventory_clearBtn;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_date;
+    private TableColumn<ProductData, String> inventory_col_date;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_price;
+    private TableColumn<ProductData, String> inventory_col_price;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_productID;
+    private TableColumn<ProductData, String> inventory_col_productID;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_productName;
+    private TableColumn<ProductData, String> inventory_col_productName;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_status;
+    private TableColumn<ProductData, String> inventory_col_status;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_stock;
+    private TableColumn<ProductData, String> inventory_col_stock;
 
     @FXML
-    private TableColumn<?, ?> inventory_col_type;
+    private TableColumn<ProductData, String> inventory_col_type;
 
     @FXML
     private Button inventory_deleteBtn;
@@ -65,7 +70,7 @@ public class MainFromController implements Initializable {
     private Button inventory_importBtn;
 
     @FXML
-    private TableView<?> inventory_tableView;
+    private TableView<ProductData> inventory_tableView;
 
     @FXML
     private Button inventory_updateBtn;
@@ -101,6 +106,53 @@ public class MainFromController implements Initializable {
     private ComboBox<String> inventory_type;
 
     private Alert alert;
+
+    private Connection connect;
+    private PreparedStatement prepare;
+    private Statement statement;
+    private ResultSet result;
+
+    public ObservableList<ProductData> inventoryDataList() {
+        ObservableList<ProductData> listData = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM product";
+
+        connect = Database.connectDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ProductData prodData;
+
+            while (result.next()) {
+                prodData = new ProductData(result.getInt("id"), result.getString("prod_id"),
+                        result.getString("prod_name"), result.getString("type"),
+                        result.getInt("stock"), result.getDouble("price"),
+                        result.getString("status"), result.getString("image"),
+                        result.getDate("date"));
+
+                listData.add(prodData);
+
+            }
+        } catch(Exception e) {e.printStackTrace();}
+        return listData;
+    }
+
+    private ObservableList<ProductData> inventoryListData;
+    public void inventoryShowData() {
+        inventoryListData = inventoryDataList();
+
+        inventory_col_productID.setCellValueFactory(new PropertyValueFactory<>("productId"));
+        inventory_col_productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        inventory_col_type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        inventory_col_stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        inventory_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        inventory_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        inventory_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        inventory_tableView.setItems(inventoryListData);
+    }
 
     private String[] typeList = {"Meals", "Drinks"};
 
@@ -166,5 +218,6 @@ public class MainFromController implements Initializable {
         displayUserName();
         inventoryTypeList();
         inventoryStatusList();
+        inventoryShowData();
     }
 }
