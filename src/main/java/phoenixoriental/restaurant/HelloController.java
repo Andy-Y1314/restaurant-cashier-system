@@ -112,9 +112,7 @@ public class HelloController {
             alert.showAndWait();
         } else {
             String selectData = "SELECT username, password FROM employee WHERE username = ? and password = ?";
-
             connect = Database.connectDB();
-
             try {
                 prepare = connect.prepareStatement(selectData);
                 prepare.setString(1, si_username.getText());
