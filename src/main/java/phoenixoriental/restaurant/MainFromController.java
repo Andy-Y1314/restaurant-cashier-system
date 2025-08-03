@@ -169,15 +169,64 @@ public class MainFromController implements Initializable {
 
                     prepare.executeUpdate();
 
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Added!");
+                    alert.showAndWait();
+
                     inventoryShowData();
+                    inventoryClearBtn();
                 }
             } catch(Exception e) {e.printStackTrace();}
         }
     }
 
+    public void inventoryUpdateBtn() {
+        if (inventory_productID.getText().isEmpty()
+                || inventory_productName.getText().isEmpty()
+                || inventory_type.getSelectionModel().getSelectedItem() == null
+                || inventory_stock.getText().isEmpty()
+                || inventory_price.getText().isEmpty()
+                || inventory_status.getSelectionModel().getSelectedItem() == null
+                || Data.path== null || Data.id == 0) {
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all blank fields");
+            alert.showAndWait();
+        } else {
+            String path = Data.path;
+            path = path.replace("\\", "\\\\");
+
+            String updateData = "UPDATE product SET " +
+                    "prod_id = '" + inventory_productID.getText() + "', prod_name = '" +
+                    inventory_productName.getText() + "', type = '" +
+                    inventory_type.getSelectionModel().getSelectedItem() + "', stock = '" +
+                    inventory_stock.getText() + "', price = '" +
+                    inventory_price.getText() + "', status = '" +
+                    inventory_status.getSelectionModel().getSelectedItem() + "', image = '" +
+                    path + "', date = '" + Data.date + "' WHERE id = " + Data.id;
+
+        }
+    }
+
+    public void inventoryClearBtn() {
+        inventory_productID.setText("");
+        inventory_productName.setText("");
+        inventory_type.getSelectionModel().clearSelection();
+        inventory_stock.setText("");
+        inventory_price.setText("");
+        inventory_status.getSelectionModel().clearSelection();
+        Data.path = "";
+        Data.id = 0;
+        inventory_imageView.setImage(null);
+    }
+
     public void inventoryImportBtn() {
         FileChooser openFile = new FileChooser();
-        openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Open Image File", "png", "*jpg"));
+        openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Open Image File", "*png", "*jpg"));
 
         File file = openFile.showOpenDialog(main_form.getScene().getWindow());
 
@@ -232,6 +281,25 @@ public class MainFromController implements Initializable {
         inventory_col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         inventory_tableView.setItems(inventoryListData);
+    }
+
+    public void inventorySelectData() {
+        ProductData prodData = inventory_tableView.getSelectionModel().getSelectedItem();
+        int num = inventory_tableView.getSelectionModel().getSelectedIndex();
+
+        if (num - 1 < -1) return;
+
+        inventory_productID.setText(prodData.getProductId());
+        inventory_productName.setText(prodData.getProductName());
+        inventory_stock.setText(String.valueOf(prodData.getStock()));
+        inventory_price.setText(String.valueOf(prodData.getPrice()));
+
+        Data.path = "File:" + prodData.getImage();
+        Data.date = String.valueOf(prodData.getDate());
+        Data.id = prodData.getId();
+
+        image = new Image(Data.path, 124, 141, false, true);
+        inventory_imageView.setImage(image);
     }
 
     private String[] typeList = {"Meals", "Drinks"};
