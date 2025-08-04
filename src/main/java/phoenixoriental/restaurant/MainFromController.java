@@ -197,7 +197,7 @@ public class MainFromController implements Initializable {
             alert.setContentText("Please fill all blank fields");
             alert.showAndWait();
         } else {
-            String path = Data.path;
+            String path  = Data.path;
             path = path.replace("\\", "\\\\");
 
             String updateData = "UPDATE product SET " +
@@ -209,6 +209,79 @@ public class MainFromController implements Initializable {
                     inventory_status.getSelectionModel().getSelectedItem() + "', image = '" +
                     path + "', date = '" + Data.date + "' WHERE id = " + Data.id;
 
+            connect = Database.connectDB();
+
+            try {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to UPDATE Product ID: " + inventory_productID.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get().equals(ButtonType.OK)) {
+                    prepare = connect.prepareStatement(updateData);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Updated!");
+                    alert.showAndWait();
+
+                    //Update table view
+                    inventoryShowData();
+                    //Clear fields
+                    inventoryClearBtn();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Cancelled");
+                    alert.showAndWait();
+                }
+            } catch(Exception e) {e.printStackTrace();}
+        }
+    }
+
+    public void inventoryDeleteBtn() {
+        if (Data.id == 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all blank fields");
+            alert.showAndWait();
+        } else {
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure you want to DELETE Product ID: " + inventory_productID.getText() + "?");
+            Optional<ButtonType> option = alert.showAndWait();
+
+            if (option.get().equals(ButtonType.OK)) {
+                String deleteData = "DELETE FROM product WHERE id = " + Data.id;
+                try {
+                    prepare = connect.prepareStatement(deleteData);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Deleted!");
+                    alert.showAndWait();
+
+                    //Update table view
+                    inventoryShowData();
+                    //Clear fields
+                    inventoryClearBtn();
+
+                } catch (Exception e) {e.printStackTrace();}
+            } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Cancelled");
+                alert.showAndWait();
+            }
         }
     }
 
@@ -294,11 +367,13 @@ public class MainFromController implements Initializable {
         inventory_stock.setText(String.valueOf(prodData.getStock()));
         inventory_price.setText(String.valueOf(prodData.getPrice()));
 
-        Data.path = "File:" + prodData.getImage();
+        Data.path = prodData.getImage();
+
+        String path = "File:" + prodData.getImage();
         Data.date = String.valueOf(prodData.getDate());
         Data.id = prodData.getId();
 
-        image = new Image(Data.path, 124, 141, false, true);
+        image = new Image(path, 124, 141, false, true);
         inventory_imageView.setImage(image);
     }
 

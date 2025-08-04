@@ -11,7 +11,7 @@
 .nav-btn {
     -fx-background-color: transparent;
     -fx-border-color: #fff;
-    -fx-border-width .4px;
+    -fx-border-width: .4px;
     -fx-cursor: hand;
     -fx-text-fill: #fff;
     -fx-font-size: 14px;

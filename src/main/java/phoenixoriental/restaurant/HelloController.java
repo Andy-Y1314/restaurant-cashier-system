@@ -269,7 +269,7 @@ public class HelloController {
 
                 result = prepare.executeQuery();
 
-                if (result. next()) {
+                if (result.next()) {
                     np_newPassForm.setVisible(true);
                     fp_questionForm.setVisible(false);
                 } else {
@@ -304,7 +304,6 @@ public class HelloController {
                     result = prepare.executeQuery();
 
                     String date = "";
-
                     if (result.next()) {
                         date = result.getString("date");
                     }
@@ -334,9 +333,6 @@ public class HelloController {
                     fp_question.getSelectionModel().clearSelection();
                     fp_answer.setText("");
                     fp_username.setText("");
-
-
-
                 } catch (Exception e) { e.printStackTrace(); };
             } else {
                 alert = new Alert(Alert.AlertType.ERROR);
