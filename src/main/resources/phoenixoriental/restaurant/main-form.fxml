@@ -17,6 +17,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
@@ -253,7 +255,7 @@
                               <Separator prefHeight="9.0" prefWidth="826.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="230.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="inventory_form" layoutX="72.0" layoutY="100.0" prefHeight="600.0" prefWidth="857.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="inventory_form" layoutX="72.0" layoutY="100.0" prefHeight="600.0" prefWidth="857.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="265.0" prefWidth="831.0" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
                                  <styleClass>
@@ -338,6 +340,35 @@
                                  </children>
                               </AnchorPane>
                               <Separator layoutX="14.0" layoutY="294.0" prefHeight="0.0" prefWidth="827.0" AnchorPane.bottomAnchor="303.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="164.0" layoutY="143.0" prefHeight="600.0" prefWidth="857.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="578.0" prefWidth="507.0" stylesheets="@mainFormDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="radius" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <ScrollPane layoutX="7.0" layoutY="6.0" prefHeight="564.0" prefWidth="483.0">
+                                       <content>
+                                          <GridPane prefHeight="12.0" prefWidth="130.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="531.0" layoutY="14.0" prefHeight="578.0" prefWidth="312.0" stylesheets="@mainFormDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="radius" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children></AnchorPane>
