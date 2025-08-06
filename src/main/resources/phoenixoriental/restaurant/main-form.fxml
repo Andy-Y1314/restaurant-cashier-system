@@ -342,18 +342,18 @@
                               <Separator layoutX="14.0" layoutY="294.0" prefHeight="0.0" prefWidth="827.0" AnchorPane.bottomAnchor="303.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="164.0" layoutY="143.0" prefHeight="600.0" prefWidth="857.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="menu_form" layoutX="164.0" layoutY="143.0" prefHeight="600.0" prefWidth="857.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="578.0" prefWidth="507.0" stylesheets="@mainFormDesign.css">
+                              <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="578.0" prefWidth="507.0" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="336.0" AnchorPane.topAnchor="11.0">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="radius" />
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <ScrollPane layoutX="7.0" layoutY="6.0" prefHeight="564.0" prefWidth="483.0">
+                                    <ScrollPane fx:id="menu_scrollPane" layoutX="13.0" layoutY="13.0" prefHeight="551.0" prefWidth="480.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="13.0">
                                        <content>
-                                          <GridPane prefHeight="12.0" prefWidth="130.0">
+                                          <GridPane fx:id="menu_gridPane" prefHeight="12.0" prefWidth="130.0">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
@@ -362,12 +362,50 @@
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="531.0" layoutY="14.0" prefHeight="578.0" prefWidth="312.0" stylesheets="@mainFormDesign.css">
+                              <AnchorPane layoutX="531.0" layoutY="14.0" prefHeight="578.0" prefWidth="312.0" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="radius" />
                                     <String fx:value="shadow" />
                                  </styleClass>
+                                 <children>
+                                    <TableView fx:id="menu_tableView" layoutX="8.0" layoutY="14.0" prefHeight="228.0" prefWidth="297.0" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="14.0">
+                                      <columns>
+                                        <TableColumn fx:id="menu_col_productName" prefWidth="108.5" text="Product Name" />
+                                        <TableColumn fx:id="menu_col_quantity" prefWidth="93.0" text="Quantity" />
+                                          <TableColumn fx:id="menu_col_price" prefWidth="94.0" text="Price ($)" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="138.0" layoutY="251.0" text="Total:" AnchorPane.bottomAnchor="306.0" AnchorPane.rightAnchor="137.5">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="menu_total" layoutX="178.0" layoutY="251.0" prefHeight="21.0" prefWidth="117.0" text="\$0.0" AnchorPane.bottomAnchor="306.0" AnchorPane.rightAnchor="17.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="86.0" layoutY="285.0" text="Amount:" AnchorPane.bottomAnchor="272.0" AnchorPane.rightAnchor="138.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="menu_amount" layoutX="179.0" layoutY="283.0" prefHeight="25.0" prefWidth="116.0" promptText="\$0.0" AnchorPane.bottomAnchor="270.0" AnchorPane.rightAnchor="17.0" />
+                                    <Label layoutX="119.0" layoutY="316.0" text="Change:" AnchorPane.bottomAnchor="241.0" AnchorPane.rightAnchor="139.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="menu_change" layoutX="178.0" layoutY="316.0" prefHeight="21.0" prefWidth="117.0" text="\$0.0" AnchorPane.bottomAnchor="241.0" AnchorPane.rightAnchor="17.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="menu_payBtn" layoutX="7.0" layoutY="378.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="300.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Pay" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="5.0" />
+                                    <Button fx:id="menu_removeBtn" layoutX="9.0" layoutY="457.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="130.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="9.0" />
+                                    <Button fx:id="menu_receiptBtn" layoutX="172.0" layoutY="457.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="130.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Receipt" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="10.0" />
+                                 </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>

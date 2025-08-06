@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
@@ -108,6 +109,46 @@ public class MainFromController implements Initializable {
     @FXML
     private ComboBox<String> inventory_type;
 
+    @FXML
+    private TextField menu_amount;
+
+    @FXML
+    private Label menu_change;
+
+    @FXML
+    private TableColumn<?, ?> menu_col_price;
+
+    @FXML
+    private TableColumn<?, ?> menu_col_productName;
+
+    @FXML
+    private TableColumn<?, ?> menu_col_quantity;
+
+    @FXML
+    private AnchorPane menu_form;
+
+    @FXML
+    private GridPane menu_gridPane;
+
+    @FXML
+    private Button menu_payBtn;
+
+    @FXML
+    private Button menu_receiptBtn;
+
+    @FXML
+    private Button menu_removeBtn;
+
+    @FXML
+    private ScrollPane menu_scrollPane;
+
+    @FXML
+    private TableView<?> menu_tableView;
+
+    @FXML
+    private Label menu_total;
+
+
     private Alert alert;
 
     private Connection connect;
@@ -116,6 +157,8 @@ public class MainFromController implements Initializable {
     private ResultSet result;
 
     private Image image;
+
+    private ObservableList<ProductData> cardListData;
 
     public void inventoryAddBtn() {
         if (inventory_productID.getText().isEmpty()
@@ -400,6 +443,10 @@ public class MainFromController implements Initializable {
 
         ObservableList<String> listData = FXCollections.observableArrayList(statusL);
         inventory_status.setItems(listData);
+    }
+
+    public ObservableList<ProductData> menuGetData() {
+        return cardListData;
     }
 
     public void logout() {

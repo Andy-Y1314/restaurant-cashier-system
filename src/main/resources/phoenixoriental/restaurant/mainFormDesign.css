@@ -22,6 +22,7 @@
     -fx-text-fill: #000;
 }
 
+/*rgba(red, green, blue, alpha), radius, spread, offsetx, offsety*/
 .shadow {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
 }
