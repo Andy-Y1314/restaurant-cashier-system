@@ -158,7 +158,7 @@ public class MainFromController implements Initializable {
 
     private Image image;
 
-    private ObservableList<ProductData> cardListData;
+    private ObservableList<ProductData> cardListData = FXCollections.observableArrayList();
 
     public void inventoryAddBtn() {
         if (inventory_productID.getText().isEmpty()
@@ -377,7 +377,6 @@ public class MainFromController implements Initializable {
                         result.getDate("date"));
 
                 listData.add(prodData);
-
             }
         } catch(Exception e) {e.printStackTrace();}
         return listData;
@@ -446,7 +445,57 @@ public class MainFromController implements Initializable {
     }
 
     public ObservableList<ProductData> menuGetData() {
-        return cardListData;
+        String sql = "SELECT * FROM product";
+
+        ObservableList<ProductData> listData = FXCollections.observableArrayList();
+        connect = Database.connectDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ProductData prod;
+
+            while (result.next()) {
+                prod = new ProductData(result.getInt("id"),
+                        result.getString("prod_id"),
+                        result.getString("prod_name"),
+                        result.getDouble("price"),
+                        result.getString("image"));
+
+                listData.add(prod);
+            }
+        } catch(Exception e) {e.printStackTrace();}
+
+        return listData;
+    }
+
+    public void menuDisplayCard() {
+        cardListData.clear();
+        cardListData.addAll(menuGetData());
+
+        int row = 0;
+        int column = 0;
+
+        menu_gridPane.getRowConstraints().clear();
+        menu_gridPane.getColumnConstraints().clear();
+
+        for (int q = 0; q < cardListData.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("card-product.fxml"));
+                AnchorPane pane = load.load();
+                cardProductController cardC = load.getController();
+                cardC.setData(cardListData.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+                menu_gridPane.add(pane, column++, row);
+
+            } catch(Exception e) {e.printStackTrace();}
+        }
     }
 
     public void logout() {
@@ -489,5 +538,6 @@ public class MainFromController implements Initializable {
         inventoryTypeList();
         inventoryStatusList();
         inventoryShowData();
+        menuDisplayCard();
     }
 }
