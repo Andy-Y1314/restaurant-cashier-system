@@ -2,9 +2,11 @@ package phoenixoriental.restaurant;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -24,7 +26,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
-public class MainFromController implements Initializable {
+public class MainFormController implements Initializable {
     @FXML
     private Button customers_btn;
 
@@ -147,6 +149,9 @@ public class MainFromController implements Initializable {
 
     @FXML
     private Label menu_total;
+
+    @FXML
+    private AnchorPane dashboard_form;
 
 
     private Alert alert;
@@ -461,7 +466,8 @@ public class MainFromController implements Initializable {
                         result.getString("prod_id"),
                         result.getString("prod_name"),
                         result.getDouble("price"),
-                        result.getString("image"));
+                        result.getString("image"),
+                        result.getDate("date"));
 
                 listData.add(prod);
             }
@@ -477,6 +483,7 @@ public class MainFromController implements Initializable {
         int row = 0;
         int column = 0;
 
+        menu_gridPane.getChildren().clear();
         menu_gridPane.getRowConstraints().clear();
         menu_gridPane.getColumnConstraints().clear();
 
@@ -494,7 +501,63 @@ public class MainFromController implements Initializable {
                 }
                 menu_gridPane.add(pane, column++, row);
 
+                GridPane.setMargin(pane, new Insets(10));
+
             } catch(Exception e) {e.printStackTrace();}
+        }
+    }
+
+    private int cID;
+    public void customerID() {
+        String sql = "SELECT MAX(customer_id) FROM customer";
+        connect = Database.connectDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                cID = result.getInt("MAX(customer_id)");
+
+                String checkCID = "SELECT MAX(customer_id) FROM receipt";
+                prepare = connect.prepareStatement(checkCID);
+                result = prepare.executeQuery();
+
+                int checkID = 0;
+                if (result.next()) {
+                    checkID = result.getInt("MAX(customer_id)");
+                }
+
+                if (cID == 0) {
+                    cID += 1;
+                } else if(cID == checkID) {
+                    cID += 1;
+                }
+
+                Data.cID = cID;
+            }
+        } catch(Exception e) {e.printStackTrace();}
+    }
+
+    public void switchForm(ActionEvent event) {
+        if (event.getSource() == dashboard_btn) {
+            dashboard_form.setVisible(true);
+            inventory_form.setVisible(false);
+            menu_form.setVisible(false);
+        } else if (event.getSource() == inventory_btn) {
+            dashboard_form.setVisible(false);
+            inventory_form.setVisible(true);
+            menu_form.setVisible(false);
+
+            inventoryTypeList();
+            inventoryStatusList();
+            inventoryShowData();
+        } else if (event.getSource() == menu_btn) {
+            dashboard_form.setVisible(false);
+            inventory_form.setVisible(false);
+            menu_form.setVisible(true);
+
+            menuDisplayCard();
         }
     }
 
@@ -538,6 +601,7 @@ public class MainFromController implements Initializable {
         inventoryTypeList();
         inventoryStatusList();
         inventoryShowData();
+
         menuDisplayCard();
     }
 }

@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixoriental.restaurant.MainFromController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phoenixoriental.restaurant.MainFormController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -50,9 +50,9 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="dashboard_btn" layoutX="8.0" layoutY="223.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Dashboard" />
-                              <Button fx:id="inventory_btn" layoutX="9.0" layoutY="271.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Inventory" />
-                              <Button fx:id="menu_btn" layoutX="9.0" layoutY="319.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Menu" />
+                              <Button fx:id="dashboard_btn" layoutX="8.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Dashboard" />
+                              <Button fx:id="inventory_btn" layoutX="9.0" layoutY="271.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Inventory" />
+                              <Button fx:id="menu_btn" layoutX="9.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Menu" />
                               <Button fx:id="customers_btn" layoutX="10.0" layoutY="367.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Customers" />
                               <Button fx:id="logout_btn" layoutX="26.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="42.0" styleClass="shadow" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="26.0">
                                  <graphic>
@@ -76,7 +76,7 @@
                <center>
                   <AnchorPane prefHeight="600.0" prefWidth="1033.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="104.0" layoutY="135.0" prefHeight="600.0" prefWidth="857.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboard_form" layoutX="104.0" layoutY="135.0" prefHeight="600.0" prefWidth="857.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="832.0" stylesheets="@mainFormDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="21.0">
                                  <styleClass>
