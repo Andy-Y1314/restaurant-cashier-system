@@ -118,13 +118,13 @@ public class MainFormController implements Initializable {
     private Label menu_change;
 
     @FXML
-    private TableColumn<?, ?> menu_col_price;
+    private TableColumn<ProductData, String> menu_col_price;
 
     @FXML
-    private TableColumn<?, ?> menu_col_productName;
+    private TableColumn<ProductData, String> menu_col_productName;
 
     @FXML
-    private TableColumn<?, ?> menu_col_quantity;
+    private TableColumn<ProductData, String> menu_col_quantity;
 
     @FXML
     private AnchorPane menu_form;
@@ -145,7 +145,7 @@ public class MainFormController implements Initializable {
     private ScrollPane menu_scrollPane;
 
     @FXML
-    private TableView<?> menu_tableView;
+    private TableView<ProductData> menu_tableView;
 
     @FXML
     private Label menu_total;
@@ -465,6 +465,8 @@ public class MainFormController implements Initializable {
                 prod = new ProductData(result.getInt("id"),
                         result.getString("prod_id"),
                         result.getString("prod_name"),
+                        result.getString("type"),
+                        result.getInt("stock"),
                         result.getDouble("price"),
                         result.getString("image"),
                         result.getDate("date"));
@@ -505,6 +507,45 @@ public class MainFormController implements Initializable {
 
             } catch(Exception e) {e.printStackTrace();}
         }
+    }
+
+    public ObservableList<ProductData> menuDisplayOrder() {
+        ObservableList<ProductData> listData = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM customer";
+        connect = Database.connectDB();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            ProductData prod;
+
+            while (result.next()) {
+                prod = new ProductData(result.getInt("id"),
+                        result.getString("prod_id"),
+                        result.getString("prod_name"),
+                        result.getString("type"),
+                        result.getInt("quantity"),
+                        result.getDouble("price"),
+                        result.getString("image"),
+                        result.getDate("date"));
+                listData.add(prod);
+            }
+        } catch(Exception e) {e.printStackTrace();}
+
+        return listData;
+    }
+
+    private ObservableList<ProductData> menuListData;
+    public void menuShowData() {
+        menuListData = menuDisplayOrder();
+
+        menu_col_productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        menu_col_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        menu_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        menu_tableView.setItems(cardListData);
     }
 
     private int cID;
@@ -558,6 +599,7 @@ public class MainFormController implements Initializable {
             menu_form.setVisible(true);
 
             menuDisplayCard();
+            menuDisplayOrder();
         }
     }
 
@@ -569,7 +611,7 @@ public class MainFormController implements Initializable {
             alert.setContentText("Are you sure you want to logout?");
             Optional<ButtonType> option = alert.showAndWait();
 
-            if (option.get().equals(ButtonType.OK)) {
+            if (option.isPresent() && option.get() == ButtonType.OK) {
                 //To hide the main-form
                 logout_btn.getScene().getWindow().hide();
 
@@ -603,5 +645,6 @@ public class MainFormController implements Initializable {
         inventoryShowData();
 
         menuDisplayCard();
+        menuDisplayOrder();
     }
 }

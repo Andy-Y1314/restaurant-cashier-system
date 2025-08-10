@@ -87,6 +87,29 @@ public class cardProductController implements Initializable {
         connect = Database.connectDB();
 
         try {
+            int checkStck = 0;
+            String checkStock = "SELECT stock FROM product WHERE prod_id = '" +
+                    prodID + "'";
+
+            prepare = connect.prepareStatement(checkStock);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                checkStck = result.getInt("stock");
+            }
+
+            if (checkStck == 0) {
+                String updateStock = "UPDATE product SET prod_name = '" +
+                        prod_name.getText() + "', type = '" +
+                        type + "', stock = 0, price = " + pr +
+                        ", status = 'Unavailable', image = '" +
+                        prod_image + "', date = '" +
+                        prod_date + "' WHERE prod_id = '" +
+                        prodID + "'";
+                prepare = connect.prepareStatement(updateStock);
+                prepare.executeUpdate();
+            }
+
             prepare = connect.prepareStatement(checkAvailable);
             result = prepare.executeQuery();
 
@@ -101,17 +124,6 @@ public class cardProductController implements Initializable {
                 alert.setContentText("Something went wrong!");
                 alert.showAndWait();
             } else {
-                int checkStck = 0;
-                String checkStock = "SELECT stock FROM product WHERE prod_id = '" +
-                        prodID + "'";
-
-                prepare = connect.prepareStatement(checkStock);
-                result = prepare.executeQuery();
-
-                if (result.next()) {
-                    checkStck = result.getInt("stock");
-                }
-
                 if (checkStck < qty) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
@@ -119,22 +131,27 @@ public class cardProductController implements Initializable {
                     alert.setContentText("Invalid. This product is out of stock");
                     alert.showAndWait();
                 } else {
+                    prod_image = prod_image.replace("\\", "\\\\");
+
                     String insertData = "INSERT INTO customer " +
-                            "(customer_id, prod_name, quantity, price, date, em_username) " +
-                            "VALUES(?,?,?,?,?,?)";
+                            "(customer_id, prod_id, prod_name, type, quantity, price, date, image, em_username) " +
+                            "VALUES(?,?,?,?,?,?,?,?,?)";
                     prepare = connect.prepareStatement(insertData);
                     prepare.setString(1, String.valueOf(Data.cID));
-                    prepare.setString(2, prod_name.getText());
-                    prepare.setString(3, String.valueOf(qty));
+                    prepare.setString(2, prodID);
+                    prepare.setString(3, prod_name.getText());
+                    prepare.setString(4, type);
+                    prepare.setString(5, String.valueOf(qty));
 
                     totalP = (qty * pr);
-                    prepare.setString(4, String.valueOf(totalP));
+                    prepare.setString(6, String.valueOf(totalP));
 
                     Date date = new Date();
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-                    prepare.setString(5, String.valueOf(sqlDate));
+                    prepare.setString(7, String.valueOf(sqlDate));
 
-                    prepare.setString(6, Data.username);
+                    prepare.setString(8, prod_image);
+                    prepare.setString(9, Data.username);
                     prepare.executeUpdate();
 
                     int upStock = checkStck - qty;
