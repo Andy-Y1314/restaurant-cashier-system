@@ -537,6 +537,26 @@ public class MainFormController implements Initializable {
         return listData;
     }
 
+    private Double totalP;
+    public void menuDisplayTotal() {
+        customerID();
+        String total = "SELECT COUNT(price) FROM customer WHERE customer_id = " + cID;
+
+        connect = Database.connectDB();
+
+        try {
+            prepare = connect.prepareStatement(total);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                totalP = result.getDouble("COUNT(price)");
+            }
+
+            menu_total.setText("$" + totalP);
+
+        } catch(Exception e) {e.printStackTrace();}
+    }
+
     private ObservableList<ProductData> menuListData;
     public void menuShowData() {
         menuListData = menuDisplayOrder();
@@ -600,6 +620,7 @@ public class MainFormController implements Initializable {
 
             menuDisplayCard();
             menuDisplayOrder();
+            menuDisplayTotal();
         }
     }
 
@@ -646,5 +667,6 @@ public class MainFormController implements Initializable {
 
         menuDisplayCard();
         menuDisplayOrder();
+        menuDisplayTotal();
     }
 }
