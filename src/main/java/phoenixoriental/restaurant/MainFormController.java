@@ -388,6 +388,8 @@ public class MainFormController implements Initializable {
     }
 
     //To show data on the table
+    //Binds each TableColumn to a ProductData field using PropertyValueFactory
+    //Uses reflection to call the matching getter (e.g., getProductId())
     private ObservableList<ProductData> inventoryListData;
     public void inventoryShowData() {
         inventoryListData = inventoryDataList();
@@ -538,9 +540,9 @@ public class MainFormController implements Initializable {
     }
 
     private Double totalP;
-    public void menuDisplayTotal() {
+    public void menuGetTotal() {
         customerID();
-        String total = "SELECT COUNT(price) FROM customer WHERE customer_id = " + cID;
+        String total = "SELECT SUM(price) FROM customer WHERE customer_id = " + cID;
 
         connect = Database.connectDB();
 
@@ -549,12 +551,14 @@ public class MainFormController implements Initializable {
             result = prepare.executeQuery();
 
             if (result.next()) {
-                totalP = result.getDouble("COUNT(price)");
+                totalP = result.getDouble("SUM(price)");
             }
-
-            menu_total.setText("$" + totalP);
-
         } catch(Exception e) {e.printStackTrace();}
+    }
+
+    public void menuDisplayTotal() {
+        menuGetTotal();
+        menu_total.setText("$" + totalP);
     }
 
     private ObservableList<ProductData> menuListData;

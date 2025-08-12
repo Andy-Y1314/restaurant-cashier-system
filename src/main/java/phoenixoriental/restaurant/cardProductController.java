@@ -156,8 +156,6 @@ public class cardProductController implements Initializable {
 
                     int upStock = checkStck - qty;
 
-                    prod_image = prod_image.replace("\\", "\\\\");
-
                     String updateStock = "UPDATE product SET prod_name = '" +
                             prod_name.getText() + "', type = '" +
                             type + "', stock = " + upStock + ", price = " + pr +
@@ -175,6 +173,8 @@ public class cardProductController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Added!");
                     alert.showAndWait();
+
+                    mForm.menuGetTotal();
                 }
             }
         } catch(Exception e) {e.printStackTrace();}
