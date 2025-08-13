@@ -172,7 +172,7 @@ public class MainFormController implements Initializable {
                 || inventory_stock.getText().isEmpty()
                 || inventory_price.getText().isEmpty()
                 || inventory_status.getSelectionModel().getSelectedItem() == null
-                || Data.path== null) {
+                || Data.path == null) {
 
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
@@ -349,6 +349,7 @@ public class MainFormController implements Initializable {
         FileChooser openFile = new FileChooser();
         openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Open Image File", "*png", "*jpg"));
 
+        //Opens file chooser dialog window in main_form window
         File file = openFile.showOpenDialog(main_form.getScene().getWindow());
 
         if (file != null) {
@@ -511,10 +512,11 @@ public class MainFormController implements Initializable {
         }
     }
 
-    public ObservableList<ProductData> menuDisplayOrder() {
+    public ObservableList<ProductData> menuGetOrder() {
+        customerID();
         ObservableList<ProductData> listData = FXCollections.observableArrayList();
 
-        String sql = "SELECT * FROM customer";
+        String sql = "SELECT * FROM customer WHERE customer_id = " + cID;
         connect = Database.connectDB();
 
         try {
@@ -539,7 +541,28 @@ public class MainFormController implements Initializable {
         return listData;
     }
 
-    private Double totalP;
+    private ObservableList<ProductData> menuOrderListData;
+    public void menuShowOrderData() {
+        menuOrderListData = menuGetOrder();
+
+        menu_col_productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        menu_col_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        menu_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        menu_tableView.setItems(menuOrderListData);
+    }
+
+    private int getid;
+    public void menuSelectOrder() {
+        ProductData prod = menu_tableView.getSelectionModel().getSelectedItem();
+        int num = menu_tableView.getSelectionModel().getSelectedIndex();
+
+        if (num - 1 < - 1) return;
+
+        getid = prod.getId();
+    }
+
+    private double totalP;
     public void menuGetTotal() {
         customerID();
         String total = "SELECT SUM(price) FROM customer WHERE customer_id = " + cID;
@@ -561,15 +584,103 @@ public class MainFormController implements Initializable {
         menu_total.setText("$" + totalP);
     }
 
-    private ObservableList<ProductData> menuListData;
-    public void menuShowData() {
-        menuListData = menuDisplayOrder();
+    private double amount;
+    private double change;
+    public void menuAmount() {
+        menuGetTotal();
+        if (menu_amount.getText().isEmpty() || totalP == 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid!");
+            alert.showAndWait();
+        } else {
+            amount = Double.parseDouble(menu_amount.getText());
+            if (amount < totalP) {
+                menu_amount.setText("");
+            } else {
+                change = (amount - totalP);
+                menu_change.setText("$" + change);
+            }
+        }
+    }
 
-        menu_col_productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
-        menu_col_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        menu_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+    public void menuPayBtn() {
+        if (totalP == 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please choose your order first!");
+            alert.showAndWait();
+        } else {
+            menuGetTotal();
+            String insertPay = "INSERT INTO receipt (customer_id, total, date, em_username) " +
+                    "VALUES(?,?,?,?)";
 
-        menu_tableView.setItems(cardListData);
+            connect = Database.connectDB();
+
+            try {
+                if (amount == 0) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Something wrong");
+                    alert.showAndWait();
+                } else {
+                    alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Are you sure?");
+                    Optional<ButtonType> option = alert.showAndWait();
+
+                    if (option.get().equals(ButtonType.OK)) {
+                        customerID();
+                        menuGetTotal();
+                        prepare = connect.prepareStatement(insertPay);
+
+                        prepare.setString(1, String.valueOf(cID));
+                        prepare.setString(2, String.valueOf(totalP));
+
+                        Date date = new Date();
+                        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+                        prepare.setString(3, String.valueOf(sqlDate));
+                        prepare .setString(4, Data.username);
+
+                        prepare.executeUpdate();
+
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Successful");
+                        alert.showAndWait();
+
+                        menuShowOrderData();
+                        menuRestart();
+                    } else {
+                        alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Cancelled");
+                        alert.showAndWait();
+                    }
+                }
+            } catch(Exception e) {e.printStackTrace();}
+        }
+    }
+
+    public void menuRemoveBtn() {
+
+    }
+
+    public void menuRestart() {
+        totalP = 0;
+        change = 0;
+        amount = 0;
+
+        menu_total.setText("$0.0");
+        menu_amount.setText("");
+        menu_change.setText("$0.0");
     }
 
     private int cID;
@@ -623,8 +734,8 @@ public class MainFormController implements Initializable {
             menu_form.setVisible(true);
 
             menuDisplayCard();
-            menuDisplayOrder();
             menuDisplayTotal();
+            menuShowOrderData();
         }
     }
 
@@ -670,7 +781,8 @@ public class MainFormController implements Initializable {
         inventoryShowData();
 
         menuDisplayCard();
-        menuDisplayOrder();
+        menuGetOrder();
         menuDisplayTotal();
+        menuShowOrderData();
     }
 }
