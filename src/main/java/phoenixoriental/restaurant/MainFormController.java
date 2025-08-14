@@ -245,7 +245,7 @@ public class MainFormController implements Initializable {
             alert.setContentText("Please fill all blank fields");
             alert.showAndWait();
         } else {
-            String path  = Data.path;
+            String path = Data.path;
             path = path.replace("\\", "\\\\");
 
             String updateData = "UPDATE product SET " +
@@ -418,7 +418,6 @@ public class MainFormController implements Initializable {
         inventory_price.setText(String.valueOf(prodData.getPrice()));
 
         Data.path = prodData.getImage();
-
         String path = "File:" + prodData.getImage();
         Data.date = String.valueOf(prodData.getDate());
         Data.id = prodData.getId();
@@ -559,6 +558,7 @@ public class MainFormController implements Initializable {
 
         if (num - 1 < - 1) return;
 
+        //Get ID per order
         getid = prod.getId();
     }
 
@@ -670,7 +670,29 @@ public class MainFormController implements Initializable {
     }
 
     public void menuRemoveBtn() {
+        if (getid == 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select the order you want to remove");
+            alert.showAndWait();
+        } else {
+            String deleteData = "DELETE FROM customer WHERE id = " + getid;
+            connect = Database.connectDB();
+            try {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to delete this order");
+                Optional<ButtonType> option = alert.showAndWait();
 
+                if (option.get().equals(ButtonType.OK)) {
+                    prepare = connect.prepareStatement(deleteData);
+                    prepare.executeUpdate();
+                }
+                menuShowOrderData();
+            } catch(Exception e) {e.printStackTrace();}
+        }
     }
 
     public void menuRestart() {

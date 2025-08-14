@@ -369,7 +369,7 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView fx:id="menu_tableView" layoutX="8.0" layoutY="14.0" prefHeight="228.0" prefWidth="297.0" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="14.0">
+                                    <TableView fx:id="menu_tableView" layoutX="8.0" layoutY="14.0" onMouseClicked="#menuSelectOrder" prefHeight="228.0" prefWidth="297.0" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="14.0">
                                       <columns>
                                         <TableColumn fx:id="menu_col_productName" prefWidth="108.5" text="Product Name" />
                                         <TableColumn fx:id="menu_col_quantity" prefWidth="93.0" text="Quantity" />
@@ -403,7 +403,7 @@
                                        </font>
                                     </Label>
                                     <Button fx:id="menu_payBtn" layoutX="7.0" layoutY="378.0" mnemonicParsing="false" onAction="#menuPayBtn" prefHeight="44.0" prefWidth="300.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Pay" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="5.0" />
-                                    <Button fx:id="menu_removeBtn" layoutX="9.0" layoutY="457.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="130.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="9.0" />
+                                    <Button fx:id="menu_removeBtn" layoutX="9.0" layoutY="457.0" mnemonicParsing="false" onAction="#menuRemoveBtn" prefHeight="44.0" prefWidth="130.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="9.0" />
                                     <Button fx:id="menu_receiptBtn" layoutX="172.0" layoutY="457.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="130.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Receipt" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="10.0" />
                                  </children>
                               </AnchorPane>
