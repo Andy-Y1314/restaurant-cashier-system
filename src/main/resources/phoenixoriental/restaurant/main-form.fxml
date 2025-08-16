@@ -53,7 +53,7 @@
                               <Button fx:id="dashboard_btn" layoutX="8.0" layoutY="223.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Dashboard" />
                               <Button fx:id="inventory_btn" layoutX="9.0" layoutY="271.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Inventory" />
                               <Button fx:id="menu_btn" layoutX="9.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Menu" />
-                              <Button fx:id="customers_btn" layoutX="10.0" layoutY="367.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Customers" />
+                              <Button fx:id="customers_btn" layoutX="10.0" layoutY="367.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="225.0" styleClass="nav-btn" stylesheets="@mainFormDesign.css" text="Customers" />
                               <Button fx:id="logout_btn" layoutX="26.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="42.0" styleClass="shadow" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="26.0">
                                  <graphic>
                                     <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -76,7 +76,7 @@
                <center>
                   <AnchorPane prefHeight="600.0" prefWidth="1033.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboard_form" layoutX="104.0" layoutY="135.0" prefHeight="600.0" prefWidth="857.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboard_form" layoutX="104.0" layoutY="135.0" prefHeight="600.0" prefWidth="857.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="832.0" stylesheets="@mainFormDesign.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="21.0">
                                  <styleClass>
@@ -96,7 +96,7 @@
                                                             <Image url="@user.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                      <Label fx:id="dashboard_NC" layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -115,7 +115,7 @@
                                                             <Image url="@dollar.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Label layoutX="225.0" layoutY="14.0" text="\$0" textFill="#fffdfd">
+                                                      <Label fx:id="dashboard_TI" layoutX="225.0" layoutY="14.0" text="\$0" textFill="#fffdfd">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -172,7 +172,7 @@
                                                             <Image url="@money.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Label layoutX="225.0" layoutY="14.0" text="\$0" textFill="#fffdfd">
+                                                      <Label fx:id="dashboard_TotalI" layoutX="225.0" layoutY="14.0" text="\$0" textFill="#fffdfd">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -191,7 +191,7 @@
                                                             <Image url="@cart.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Label layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
+                                                      <Label fx:id="dashboard_NSP" layoutX="225.0" layoutY="14.0" text="0" textFill="#fffdfd">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -223,7 +223,7 @@
                                           <String fx:value="radius" />
                                        </styleClass>
                                        <children>
-                                          <AreaChart layoutX="68.0" layoutY="-38.0" prefHeight="324.0" prefWidth="380.0" title="Income Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                          <AreaChart fx:id="dashboard_incomeChart" layoutX="68.0" layoutY="-38.0" prefHeight="324.0" prefWidth="380.0" title="Income Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -240,7 +240,7 @@
                                           <String fx:value="radius" />
                                        </styleClass>
                                        <children>
-                                          <BarChart layoutX="5.0" layoutY="-21.0" prefHeight="310.0" prefWidth="442.0" title="Customer's Chart" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <BarChart fx:id="dashboard_CustomerChart" layoutX="5.0" layoutY="-21.0" prefHeight="310.0" prefWidth="442.0" title="Customer's Chart" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -409,7 +409,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="871.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="customers_form" layoutX="14.0" layoutY="14.0" prefHeight="614.0" prefWidth="871.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane prefHeight="568.0" prefWidth="825.0" stylesheets="@mainFormDesign.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="16.0">
                                  <styleClass>
@@ -418,12 +418,12 @@
                                     <String fx:value="radius" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="14.0" layoutY="49.0" prefHeight="468.0" prefWidth="801.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="49.0">
+                                    <TableView fx:id="customers_tableView" layoutX="14.0" layoutY="49.0" prefHeight="468.0" prefWidth="801.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="49.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="Customer ID" />
-                                        <TableColumn prefWidth="75.0" text="Total($)" />
-                                          <TableColumn prefWidth="75.0" text="Date" />
-                                          <TableColumn prefWidth="350.5" text="Cashier" />
+                                        <TableColumn fx:id="customer_col_customerID" prefWidth="161.5" text="Customer ID" />
+                                        <TableColumn fx:id="customer_col_total" prefWidth="188.0" text="Total($)" />
+                                          <TableColumn fx:id="customer_col_date" minWidth="0.0" prefWidth="163.5" text="Date" />
+                                          <TableColumn fx:id="customer_col_cashier" prefWidth="251.5" text="Cashier" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
